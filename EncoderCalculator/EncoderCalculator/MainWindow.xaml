@@ -84,23 +84,6 @@
 
                 <GroupBox x:Name="groupBox4" Header="Row 1" HorizontalAlignment="Left" Height="410" Margin="68,8,0,0" VerticalAlignment="Top" Width="67">
                     <Grid>
-                        <Label x:Name="label30" Content="{Binding Path=txtW1R1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Height="25" Width="55" />
-                        <Label x:Name="label31" Content="Label" HorizontalAlignment="Left" Margin="17,47,0,0" VerticalAlignment="Top"/>
-                        <!--<Label x:Name="label31_Copy" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy1" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy2" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy3" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy4" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy5" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy6" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy7" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy8" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy9" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy10" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy11" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy12" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy13" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label31_Copy14" Content="Label" HorizontalAlignment="Left" Margin="17,47,-0.2,0" VerticalAlignment="Top"/>-->
                         <TextBox x:Name="txtNewResolutionW1R1" HorizontalAlignment="Left" Height="25" Margin="0,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" IsReadOnly="True" IsTabStop="False" />
                         <TextBox x:Name="txtNewResolutionW2R1" HorizontalAlignment="Left" Height="25" Margin="0,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" IsTabStop="False" IsReadOnly="True"/>
                         <TextBox x:Name="txtNewResolutionW3R1" HorizontalAlignment="Left" Height="25" Margin="0,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" IsTabStop="False" IsReadOnly="True"/>
@@ -139,8 +122,8 @@
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox6" Header="Resolution" HorizontalAlignment="Left" Margin="246,54,0,0" VerticalAlignment="Top" Height="70">
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="74" Loaded="ComboBoxLoadedResolutions" TabIndex="31"/>
+        <GroupBox x:Name="groupBox6" Header="Resolution" HorizontalAlignment="Left" Margin="231,54,0,0" VerticalAlignment="Top" Height="70" Width="100">
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,8,-2.8,0" VerticalAlignment="Top" Width="90" Loaded="ComboBoxLoadedResolutions" TabIndex="31"/>
         </GroupBox>
         <Button x:Name="button" Content="Click to Calculate" HorizontalAlignment="Left" Margin="231,167,0,0" VerticalAlignment="Top" Width="100" Click="button_Click"/>
     </Grid>

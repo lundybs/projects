@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace EncoderCalculator
 {
@@ -73,7 +64,7 @@ namespace EncoderCalculator
             }
             catch
             {
-                MessageBox.Show("You did enter in numeric values in all of the boxes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("You did not enter in numeric values in all of the boxes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Error);
             }
         }
 
@@ -118,7 +109,7 @@ namespace EncoderCalculator
             txtNewResolutionW2R1.Text = ((w2r1 * 270) / 360).ToString();
             txtNewResolutionW2R2.Text = ((w2r2 * 270) / 360).ToString();
             txtNewResolutionW3R1.Text = ((w3r1 * 270) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r1 * 270) / 360).ToString();
+            txtNewResolutionW3R2.Text = ((w3r2 * 270) / 360).ToString();
             txtNewResolutionC1R1.Text = ((c1r1 * 270) / 360).ToString();
             txtNewResolutionC1R2.Text = ((c1r2 * 270) / 360).ToString();
             txtNewResolutionC2R1.Text = ((c2r1 * 270) / 360).ToString();
@@ -152,7 +143,7 @@ namespace EncoderCalculator
             txtNewResolutionW2R1.Text = ((w2r1 * 225) / 360).ToString();
             txtNewResolutionW2R2.Text = ((w2r2 * 225) / 360).ToString();
             txtNewResolutionW3R1.Text = ((w3r1 * 225) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r1 * 225) / 360).ToString();
+            txtNewResolutionW3R2.Text = ((w3r2 * 225) / 360).ToString();
             txtNewResolutionC1R1.Text = ((c1r1 * 225) / 360).ToString();
             txtNewResolutionC1R2.Text = ((c1r2 * 225) / 360).ToString();
             txtNewResolutionC2R1.Text = ((c2r1 * 225) / 360).ToString();
@@ -186,7 +177,7 @@ namespace EncoderCalculator
             txtNewResolutionW2R1.Text = ((w2r1 * 180) / 360).ToString();
             txtNewResolutionW2R2.Text = ((w2r2 * 180) / 360).ToString();
             txtNewResolutionW3R1.Text = ((w3r1 * 180) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r1 * 180) / 360).ToString();
+            txtNewResolutionW3R2.Text = ((w3r2 * 180) / 360).ToString();
             txtNewResolutionC1R1.Text = ((c1r1 * 180) / 360).ToString();
             txtNewResolutionC1R2.Text = ((c1r2 * 180) / 360).ToString();
             txtNewResolutionC2R1.Text = ((c2r1 * 180) / 360).ToString();
