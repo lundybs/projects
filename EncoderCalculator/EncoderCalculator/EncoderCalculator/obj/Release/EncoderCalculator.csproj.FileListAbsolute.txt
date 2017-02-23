@@ -1,0 +1,13 @@
+C:\src\EncoderCalculator\EncoderCalculator\bin\Release\EncoderCalculator.exe.config
+C:\src\EncoderCalculator\EncoderCalculator\bin\Release\EncoderCalculator.exe
+C:\src\EncoderCalculator\EncoderCalculator\bin\Release\EncoderCalculator.pdb
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\MainWindow.g.cs
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\App.g.cs
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator_MarkupCompile.cache
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator_MarkupCompile.lref
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\MainWindow.baml
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator.g.resources
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator.Properties.Resources.resources
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator.csproj.GenerateResource.Cache
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator.exe
+C:\src\EncoderCalculator\EncoderCalculator\obj\Release\EncoderCalculator.pdb
