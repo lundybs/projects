@@ -1,0 +1,14 @@
+C:\src\EncoderCalculator\EncoderCalculator\bin\Debug\EncoderCalculator.exe.config
+C:\src\EncoderCalculator\EncoderCalculator\bin\Debug\EncoderCalculator.exe
+C:\src\EncoderCalculator\EncoderCalculator\bin\Debug\EncoderCalculator.pdb
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.csprojResolveAssemblyReference.cache
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\MainWindow.g.cs
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\App.g.cs
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator_MarkupCompile.cache
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator_MarkupCompile.lref
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\MainWindow.baml
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.g.resources
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.Properties.Resources.resources
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.csproj.GenerateResource.Cache
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.exe
+C:\src\EncoderCalculator\EncoderCalculator\obj\Debug\EncoderCalculator.pdb
