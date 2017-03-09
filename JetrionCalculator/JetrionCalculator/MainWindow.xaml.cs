@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 
 namespace JetrionCalculator
@@ -18,8 +19,25 @@ namespace JetrionCalculator
                        m1r1, m1r2, m2r1, m2r2, m3r1, m3r2,
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
+        
 
         private bool cbEmbossChecked, cbHotstampChecked;
+
+        public MainWindow()
+                        {
+                            InitializeComponent();
+                        }
+
+        public void EnterToTab(object sender, KeyEventArgs e)
+        {
+            var uie = e.OriginalSource as UIElement;
+
+            if(e.Key == Key.Enter)
+            {
+                e.Handled = true;
+                uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
+        }
 
         public void CBEmboss(object sender, RoutedEventArgs e)
         {
@@ -49,11 +67,6 @@ namespace JetrionCalculator
             {
                 MessageBox.Show("Not all values were entered correctly, or no value was typed in for pixel size", "Uh oh!!", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
             }
-        }
-
-        public MainWindow()
-        {
-            InitializeComponent();
         }
 
         public void ComboBoxLoadedResolutions(object sender, RoutedEventArgs e)
