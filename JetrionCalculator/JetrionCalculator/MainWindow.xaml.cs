@@ -11,28 +11,29 @@ namespace JetrionCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private double labelQuantity, labelImages, pixelSize, fiftyFootStop, 
+        private double labelQuantity, labelImages, pixelSize, fiftyFootStop,
                        eyeMarks, tail, leader, itemblank, fiftyFeetImages, oneHundredFeet, threeHundredFeet,
-                       eighthPitch, thirtyTwoPitch, labelTotal, fiftyFootPrinted, fiftyFootOldTotal, 
+                       eighthPitch, thirtyTwoPitch, labelTotal, fiftyFootPrinted, fiftyFootOldTotal,
                        w1r1, w1r2, w2r1, w2r2, w3r1, w3r2,
                        c1r1, c1r2, c2r1, c2r2, c3r1, c3r2,
                        m1r1, m1r2, m2r1, m2r2, m3r1, m3r2,
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
-        
+
 
         private bool cbEmbossChecked, cbHotstampChecked;
 
         public MainWindow()
-                        {
-                            InitializeComponent();
-                        }
+        {
+            InitializeComponent();
+            txtLabelQuanity.Focus();
+        }
 
         public void EnterToTab(object sender, KeyEventArgs e)
         {
             var uie = e.OriginalSource as UIElement;
 
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 e.Handled = true;
                 uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
@@ -86,7 +87,8 @@ namespace JetrionCalculator
         {
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
-            tb.GotFocus -= ClearTextBoxWithGotFocus;
+            tb.GotFocus += ClearTextBoxWithGotFocus;
+
         }
 
         public void button_Click(object sender, RoutedEventArgs e)
@@ -94,15 +96,11 @@ namespace JetrionCalculator
             try
             {
                 ValuesToMemory();
-                CalculateTail();
-                CalcutateLeader();
-                CalculateItemBlanks();
-                CalculateFiftyFeetImages();
+                CalculateAllFootage();
                 CalculateEighthPitchGear();
                 CalculateThirtyTwoPitchGear();
-                CalculateOneHundredFeet();
-                CalculateThreeHundredFeet();
                 TotalLabelsToPrint();
+                txtLabelQuanity.Focus();
             }
             catch
             {
@@ -188,40 +186,31 @@ namespace JetrionCalculator
             }
         }
 
-        public void CalculateTail()
+        public void CalculateAllFootage()
         {
             tail = (960 / (pixelSize / 360));
             txtTail.Text = ((int)tail + 1).ToString();
-        }
 
-        public void CalcutateLeader()
-        {
             leader = (2700 / (pixelSize / 360));
             txtLeader.Text = ((int)leader + 1).ToString();
-        }
 
-        public void CalculateItemBlanks()
-        {
             itemblank = (84 / (pixelSize / 360));
             txtItemBlank.Text = ((int)itemblank + 1).ToString();
-        }
 
+            fiftyFeetImages = ((50 * 12) / (pixelSize / 360));
+            txtFiftyFeet.Text = ((int)fiftyFeetImages + 1).ToString();
+
+            oneHundredFeet = ((100 * 12) / (pixelSize / 360));
+            txtOneHundredFeet.Text = ((int)oneHundredFeet + 1).ToString();
+
+            threeHundredFeet = ((300 * 12) / (pixelSize / 360));
+            txtThreeHundredFeet.Text = ((int)threeHundredFeet + 1).ToString();
+        }
+        
         public void CalculateFiftyFeetImages()
         {
             fiftyFeetImages = ((50 * 12) / (pixelSize / 360));
             txtFiftyFeet.Text = ((int)fiftyFeetImages + 1).ToString();
-        }
-
-        public void CalculateOneHundredFeet()
-        {
-            oneHundredFeet = ((100 * 12) / (pixelSize / 360));
-            txtOneHundredFeet.Text = ((int)oneHundredFeet + 1).ToString();
-        }
-        
-        public void CalculateThreeHundredFeet()
-        {
-            threeHundredFeet = ((300 * 12) / (pixelSize / 360));
-            txtThreeHundredFeet.Text = ((int)threeHundredFeet + 1).ToString();
         }
 
         public void CalculateEighthPitchGear()
