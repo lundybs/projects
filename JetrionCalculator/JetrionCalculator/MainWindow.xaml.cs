@@ -11,15 +11,23 @@ namespace JetrionCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private double labelQuantity, labelImages, pixelSize, fiftyFootStop,
-                       eyeMarks, tail, leader, itemblank, fiftyFeetImages, oneHundredFeet, threeHundredFeet,
-                       eighthPitch, thirtyTwoPitch, labelTotal, fiftyFootPrinted, fiftyFootOldTotal,
+        private double labelQuantity, labelImages, pixelSize, labelTotal,
+                       eyeMarks, fiftyFeetImages, oneHundredFeet,  
                        w1r1, w1r2, w2r1, w2r2, w3r1, w3r2,
                        c1r1, c1r2, c2r1, c2r2, c3r1, c3r2,
                        m1r1, m1r2, m2r1, m2r2, m3r1, m3r2,
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
 
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This is a working prototype, not a final product yet.", "About", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private bool cbEmbossChecked, cbHotstampChecked;
 
@@ -38,6 +46,39 @@ namespace JetrionCalculator
                 e.Handled = true;
                 uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
+        }
+
+        public void EnterToCalculate(object sender, KeyEventArgs e)
+        {
+            var uie = e.OriginalSource as UIElement;
+
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+
+                if ((labelQuantity == 0) || (pixelSize == 0) || (labelImages == 0) || (eyeMarks == 0)) { }
+                else
+                {
+                    try
+                    {
+                        ValuesToMemory();
+                        CalculateAllFootage();
+                        CalculateEyeMarkPerGearType();
+                        TotalLabelsToPrint();
+                        CalculateItemFootage();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("You did not enter in correct numeric values", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
+
+        public void CalculateItemFootage()
+        {
+            double itemFootage = (((pixelSize / 360) * Double.Parse(txtTotalLabels.Text)) / 12);
+            txtItemTotalFootage.Text = itemFootage.ToString();
         }
 
         public void CBEmboss(object sender, RoutedEventArgs e)
@@ -87,7 +128,7 @@ namespace JetrionCalculator
         {
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
-            tb.GotFocus += ClearTextBoxWithGotFocus;
+            tb.GotFocus -= ClearTextBoxWithGotFocus;
 
         }
 
@@ -97,9 +138,9 @@ namespace JetrionCalculator
             {
                 ValuesToMemory();
                 CalculateAllFootage();
-                CalculateEighthPitchGear();
-                CalculateThirtyTwoPitchGear();
+                CalculateEyeMarkPerGearType();
                 TotalLabelsToPrint();
+                CalculateItemFootage();
                 txtLabelQuanity.Focus();
             }
             catch
@@ -123,14 +164,17 @@ namespace JetrionCalculator
                 if (labelQuantity <= 4999)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + oneHundredFeet);
+                    lblTotal.Content = "Total for 10% is:";
                 }
                 else if (labelQuantity >= 10000)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + oneHundredFeet);
+                    lblTotal.Content = "Total for 2% is:";
                 }
                 else
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + oneHundredFeet);
+                    lblTotal.Content = "Total for 5% is:";
                 }
                 cbEmbossChecked = false;
             }
@@ -139,14 +183,17 @@ namespace JetrionCalculator
                 if (labelQuantity <= 4999)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + (oneHundredFeet * 2));
+                    lblTotal.Content = " Total for 10% is:";
                 }
                 else if (labelQuantity >= 10000)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + (oneHundredFeet * 2));
+                    lblTotal.Content = "Total for 2% is:";
                 }
                 else
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + (oneHundredFeet * 2));
+                    lblTotal.Content = "Total for 5% is:";
                 }
                 cbHotstampChecked = false;
             }
@@ -155,14 +202,17 @@ namespace JetrionCalculator
                 if (labelQuantity <= 4999)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages);
+                    lblTotal.Content = "Total for 10% is:";
                 }
                 else if (labelQuantity >= 10000)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages);
+                    lblTotal.Content = "Total for 2% is:";
                 }
                 else
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages);
+                    lblTotal.Content = "Total for 5% is:";
                 }
             }
 
@@ -171,10 +221,10 @@ namespace JetrionCalculator
 
         public void FiftyStopTotal()
         {
-            fiftyFootOldTotal = Double.Parse(txtTotalStop.Text);
-            fiftyFootPrinted = Double.Parse(txtPrintedStop.Text);
+             double fiftyFootOldTotal = Double.Parse(txtTotalStop.Text);
+             double fiftyFootPrinted = Double.Parse(txtPrintedStop.Text);
 
-            fiftyFootStop = (fiftyFootOldTotal - fiftyFootPrinted);
+            double  fiftyFootStop = (fiftyFootOldTotal - fiftyFootPrinted);
             if (fiftyFootStop >= 0)
             {
                 fiftyFootStop = (fiftyFootStop + fiftyFeetImages);
@@ -188,13 +238,13 @@ namespace JetrionCalculator
 
         public void CalculateAllFootage()
         {
-            tail = (960 / (pixelSize / 360));
+            double tail = (960 / (pixelSize / 360));
             txtTail.Text = ((int)tail + 1).ToString();
 
-            leader = (2700 / (pixelSize / 360));
+            double leader = (2700 / (pixelSize / 360));
             txtLeader.Text = ((int)leader + 1).ToString();
 
-            itemblank = (84 / (pixelSize / 360));
+            double itemblank = (84 / (pixelSize / 360));
             txtItemBlank.Text = ((int)itemblank + 1).ToString();
 
             fiftyFeetImages = ((50 * 12) / (pixelSize / 360));
@@ -203,7 +253,7 @@ namespace JetrionCalculator
             oneHundredFeet = ((100 * 12) / (pixelSize / 360));
             txtOneHundredFeet.Text = ((int)oneHundredFeet + 1).ToString();
 
-            threeHundredFeet = ((300 * 12) / (pixelSize / 360));
+            double threeHundredFeet = ((300 * 12) / (pixelSize / 360));
             txtThreeHundredFeet.Text = ((int)threeHundredFeet + 1).ToString();
         }
         
@@ -213,18 +263,15 @@ namespace JetrionCalculator
             txtFiftyFeet.Text = ((int)fiftyFeetImages + 1).ToString();
         }
 
-        public void CalculateEighthPitchGear()
+        public void CalculateEyeMarkPerGearType()
         {
-            eighthPitch = (((pixelSize / 360) / .125)/eyeMarks);
+            double eighthPitch = (((pixelSize / 360) / .125) / eyeMarks);
             txt18Pitch.Text = ((int)eighthPitch + 1).ToString();
-        }
-        
-        public void CalculateThirtyTwoPitchGear()
-        {
-            thirtyTwoPitch = (((pixelSize / 360) * (32 / Math.PI) / eyeMarks));
+
+            double thirtyTwoPitch = (((pixelSize / 360) * (32 / Math.PI) / eyeMarks));
             txt32Pitch.Text = ((int)thirtyTwoPitch + 1).ToString();
         }
-
+        
         public void buttonPDOffset_Click(object sender, RoutedEventArgs e)
         {
             try //use to catch some errors
