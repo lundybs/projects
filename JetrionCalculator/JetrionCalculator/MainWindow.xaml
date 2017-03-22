@@ -71,7 +71,7 @@
                     </GroupBox>
                     <GroupBox x:Name="groupBox5" Header="Emboss or Hotstamp Selection" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Height="50" Width="200">
                         <Grid>
-                            <CheckBox x:Name="checkBoxEmboss" Content="Emboss" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" TabIndex="5" Checked="CBEmboss" KeyDown="EnterToTab" />
+                            <CheckBox x:Name="checkBoxEmboss" Content="Emboss" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" TabIndex="5" Checked="CBEmboss" KeyDown="EnterToTab"/>
                             <CheckBox x:Name="checkBoxHotstamp" Content="Hotstamp" HorizontalAlignment="Left" Margin="100,5,0,0" VerticalAlignment="Top" TabIndex="6" Checked="CBHotstamp" KeyDown="EnterToTab"/>
 
                         </Grid>

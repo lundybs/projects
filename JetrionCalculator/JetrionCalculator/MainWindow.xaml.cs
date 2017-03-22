@@ -19,22 +19,22 @@ namespace JetrionCalculator
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("This is a working prototype, not a final product yet.", "About", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private bool cbEmbossChecked, cbHotstampChecked;
 
         public MainWindow()
         {
             InitializeComponent();
             txtLabelQuanity.Focus();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e) //This is the about menu
+        {
+            MessageBox.Show("This is a working prototype, not a final product yet.", "About", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e) //This cloes the application in the menu
+        {
+            this.Close();
         }
 
         public void EnterToTab(object sender, KeyEventArgs e)
@@ -70,14 +70,28 @@ namespace JetrionCalculator
                     catch
                     {
                         MessageBox.Show("You did not enter in correct numeric values", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+
                     }
                 }
+            }
+
+            else if (e.Key == Key.Up)
+            {
+                e.Handled = true;
+                uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
+            }
+
+            else if (e.Key == Key.Down)
+            {
+                e.Handled = true;
+                uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
 
         public void CalculateItemFootage()
         {
             double itemFootage = (((pixelSize / 360) * Double.Parse(txtTotalLabels.Text)) / 12);
+            itemFootage = Math.Round(itemFootage, 2);
             txtItemTotalFootage.Text = itemFootage.ToString();
         }
 
@@ -126,10 +140,13 @@ namespace JetrionCalculator
 
         public void ClearTextBoxWithGotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= ClearTextBoxWithGotFocus;
-
+            (sender as TextBox).SelectAll();
+            
+            var textbox = e.OriginalSource as TextBox;
+            if (textbox != null)
+            {
+                textbox.SelectAll();
+            }
         }
 
         public void button_Click(object sender, RoutedEventArgs e)
@@ -183,7 +200,7 @@ namespace JetrionCalculator
                 if (labelQuantity <= 4999)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + (oneHundredFeet * 2));
-                    lblTotal.Content = " Total for 10% is:";
+                    lblTotal.Content = "Total for 10% is:";
                 }
                 else if (labelQuantity >= 10000)
                 {
