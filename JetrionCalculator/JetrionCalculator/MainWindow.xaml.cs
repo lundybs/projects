@@ -11,15 +11,19 @@ namespace JetrionCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private double labelQuantity, labelImages, pixelSize, labelTotal,
-                       eyeMarks, fiftyFeetImages, oneHundredFeet,  
+        private double labelQuantity, labelImages, pixelSize, labelTotal, tail, leader, itemblank,
+                       eyeMarks, fiftyFeetImages, oneHundredFeet, itemFootage, sizeOfList, addedTotalFootage,
                        w1r1, w1r2, w2r1, w2r2, w3r1, w3r2,
                        c1r1, c1r2, c2r1, c2r2, c3r1, c3r2,
                        m1r1, m1r2, m2r1, m2r2, m3r1, m3r2,
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
 
+
+
         private bool cbEmbossChecked, cbHotstampChecked;
+
+        List<double> footage = new List<double>();
 
         public MainWindow()
         {
@@ -66,6 +70,8 @@ namespace JetrionCalculator
                         CalculateEyeMarkPerGearType();
                         TotalLabelsToPrint();
                         CalculateItemFootage();
+                        AddFootageToList();
+                        TotalJobFootage();
                     }
                     catch
                     {
@@ -90,9 +96,51 @@ namespace JetrionCalculator
 
         public void CalculateItemFootage()
         {
-            double itemFootage = (((pixelSize / 360) * Double.Parse(txtTotalLabels.Text)) / 12);
+            itemFootage = (((pixelSize / 360) * Double.Parse(txtTotalLabels.Text)) / 12);
             itemFootage = Math.Round(itemFootage, 2);
             txtItemTotalFootage.Text = itemFootage.ToString();
+        }
+
+        public void AddFootageToList()
+        {
+            footage.Add(itemFootage);
+            sizeOfList = footage.Count;
+        }
+
+        public void TotalJobFootage()
+        {
+            double tailFootage = (((pixelSize / 360) * Double.Parse(txtTail.Text)) / 12);
+            double leaderFootage = (((pixelSize / 360) * Double.Parse(txtLeader.Text)) / 12);
+            double itemBlankFootage = (((pixelSize / 360) * Double.Parse(txtItemBlank.Text)) / 12);
+            double totalItemBlankFootage = 0;
+            addedTotalFootage = 0;
+            if (sizeOfList != 1)
+            {
+                totalItemBlankFootage = sizeOfList * itemBlankFootage;
+                foreach (var values in footage)
+                {
+                    addedTotalFootage += values;
+                }
+            }
+            else
+            {
+                totalItemBlankFootage = 0;
+                foreach (var values in footage)
+                {
+                    addedTotalFootage += values;
+                }
+            }
+
+            
+
+            txtTotalJobFootage.Text = Math.Round((addedTotalFootage + tailFootage + leaderFootage + totalItemBlankFootage), 2).ToString();
+        }
+
+        private void btnClearList_Click(object sender, RoutedEventArgs e)
+        {
+            footage.Clear();
+            addedTotalFootage = 0;
+            txtTotalJobFootage.Text = addedTotalFootage.ToString();
         }
 
         public void CBEmboss(object sender, RoutedEventArgs e)
@@ -105,7 +153,7 @@ namespace JetrionCalculator
 
         public void CBHotstamp(object sender, RoutedEventArgs e)
         {
-            if(checkBoxHotstamp.IsChecked == true)
+            if (checkBoxHotstamp.IsChecked == true)
             {
                 cbHotstampChecked = true;
             }
@@ -141,7 +189,7 @@ namespace JetrionCalculator
         public void ClearTextBoxWithGotFocus(object sender, RoutedEventArgs e)
         {
             (sender as TextBox).SelectAll();
-            
+
             var textbox = e.OriginalSource as TextBox;
             if (textbox != null)
             {
@@ -158,6 +206,8 @@ namespace JetrionCalculator
                 CalculateEyeMarkPerGearType();
                 TotalLabelsToPrint();
                 CalculateItemFootage();
+                //AddFootageToList();
+                //TotalJobFootage();
                 txtLabelQuanity.Focus();
             }
             catch
@@ -195,7 +245,7 @@ namespace JetrionCalculator
                 }
                 cbEmbossChecked = false;
             }
-            else if(cbHotstampChecked == true)
+            else if (cbHotstampChecked == true)
             {
                 if (labelQuantity <= 4999)
                 {
@@ -238,10 +288,10 @@ namespace JetrionCalculator
 
         public void FiftyStopTotal()
         {
-             double fiftyFootOldTotal = Double.Parse(txtTotalStop.Text);
-             double fiftyFootPrinted = Double.Parse(txtPrintedStop.Text);
+            double fiftyFootOldTotal = Double.Parse(txtTotalStop.Text);
+            double fiftyFootPrinted = Double.Parse(txtPrintedStop.Text);
 
-            double  fiftyFootStop = (fiftyFootOldTotal - fiftyFootPrinted);
+            double fiftyFootStop = (fiftyFootOldTotal - fiftyFootPrinted);
             if (fiftyFootStop >= 0)
             {
                 fiftyFootStop = (fiftyFootStop + fiftyFeetImages);
@@ -255,13 +305,13 @@ namespace JetrionCalculator
 
         public void CalculateAllFootage()
         {
-            double tail = (960 / (pixelSize / 360));
+            tail = (960 / (pixelSize / 360));
             txtTail.Text = ((int)tail + 1).ToString();
 
-            double leader = (2700 / (pixelSize / 360));
+            leader = (2700 / (pixelSize / 360));
             txtLeader.Text = ((int)leader + 1).ToString();
 
-            double itemblank = (84 / (pixelSize / 360));
+            itemblank = (84 / (pixelSize / 360));
             txtItemBlank.Text = ((int)itemblank + 1).ToString();
 
             fiftyFeetImages = ((50 * 12) / (pixelSize / 360));
@@ -273,7 +323,7 @@ namespace JetrionCalculator
             double threeHundredFeet = ((300 * 12) / (pixelSize / 360));
             txtThreeHundredFeet.Text = ((int)threeHundredFeet + 1).ToString();
         }
-        
+
         public void CalculateFiftyFeetImages()
         {
             fiftyFeetImages = ((50 * 12) / (pixelSize / 360));
@@ -288,7 +338,8 @@ namespace JetrionCalculator
             double thirtyTwoPitch = (((pixelSize / 360) * (32 / Math.PI) / eyeMarks));
             txt32Pitch.Text = ((int)thirtyTwoPitch + 1).ToString();
         }
-        
+
+        //pd offset methods
         public void buttonPDOffset_Click(object sender, RoutedEventArgs e)
         {
             try //use to catch some errors
