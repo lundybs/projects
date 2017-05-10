@@ -130,9 +130,7 @@ namespace JetrionCalculator
                     addedTotalFootage += values;
                 }
             }
-
             
-
             txtTotalJobFootage.Text = Math.Round((addedTotalFootage + tailFootage + leaderFootage + totalItemBlankFootage), 2).ToString();
         }
 
@@ -157,6 +155,11 @@ namespace JetrionCalculator
             {
                 cbHotstampChecked = true;
             }
+        }
+
+        public void RadioButtonNone(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("this is the none box");
         }
 
         public void btn50FootStop_Click(object sender, RoutedEventArgs e)
@@ -402,104 +405,104 @@ namespace JetrionCalculator
 
         public void CalculatePDOffset270DPI()
         {
-            txtNewResolutionW1R1.Text = ((w1r1 * 270) / 360).ToString();
-            txtNewResolutionW1R2.Text = ((w1r2 * 270) / 360).ToString();
-            txtNewResolutionW2R1.Text = ((w2r1 * 270) / 360).ToString();
-            txtNewResolutionW2R2.Text = ((w2r2 * 270) / 360).ToString();
-            txtNewResolutionW3R1.Text = ((w3r1 * 270) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r2 * 270) / 360).ToString();
-            txtNewResolutionC1R1.Text = ((c1r1 * 270) / 360).ToString();
-            txtNewResolutionC1R2.Text = ((c1r2 * 270) / 360).ToString();
-            txtNewResolutionC2R1.Text = ((c2r1 * 270) / 360).ToString();
-            txtNewResolutionC2R2.Text = ((c2r2 * 270) / 360).ToString();
-            txtNewResolutionC3R1.Text = ((c3r1 * 270) / 360).ToString();
-            txtNewResolutionC3R2.Text = ((c3r2 * 270) / 360).ToString();
-            txtNewResolutionM1R1.Text = ((m1r1 * 270) / 360).ToString();
-            txtNewResolutionM1R2.Text = ((m1r2 * 270) / 360).ToString();
-            txtNewResolutionM2R1.Text = ((m2r1 * 270) / 360).ToString();
-            txtNewResolutionM2R2.Text = ((m2r2 * 270) / 360).ToString();
-            txtNewResolutionM3R1.Text = ((m3r1 * 270) / 360).ToString();
-            txtNewResolutionM3R2.Text = ((m3r2 * 270) / 360).ToString();
-            txtNewResolutionY1R1.Text = ((y1r1 * 270) / 360).ToString();
-            txtNewResolutionY1R2.Text = ((y1r2 * 270) / 360).ToString();
-            txtNewResolutionY2R1.Text = ((y2r1 * 270) / 360).ToString();
-            txtNewResolutionY2R2.Text = ((y2r2 * 270) / 360).ToString();
-            txtNewResolutionY3R1.Text = ((y3r1 * 270) / 360).ToString();
-            txtNewResolutionY3R2.Text = ((y3r2 * 270) / 360).ToString();
-            txtNewResolutionK1R1.Text = ((k1r1 * 270) / 360).ToString();
-            txtNewResolutionK1R2.Text = ((k1r2 * 270) / 360).ToString();
-            txtNewResolutionK2R1.Text = ((k2r1 * 270) / 360).ToString();
-            txtNewResolutionK2R2.Text = ((k2r2 * 270) / 360).ToString();
-            txtNewResolutionK3R1.Text = ((k3r1 * 270) / 360).ToString();
-            txtNewResolutionK3R2.Text = ((k3r2 * 270) / 360).ToString();
+            txtNewResolutionW1R1.Text = ((w1r1 * 270) / 360).ToString("F");
+            txtNewResolutionW1R2.Text = ((w1r2 * 270) / 360).ToString("F");
+            txtNewResolutionW2R1.Text = ((w2r1 * 270) / 360).ToString("F");
+            txtNewResolutionW2R2.Text = ((w2r2 * 270) / 360).ToString("F");
+            txtNewResolutionW3R1.Text = ((w3r1 * 270) / 360).ToString("F");
+            txtNewResolutionW3R2.Text = ((w3r2 * 270) / 360).ToString("F");
+            txtNewResolutionC1R1.Text = ((c1r1 * 270) / 360).ToString("F");
+            txtNewResolutionC1R2.Text = ((c1r2 * 270) / 360).ToString("F");
+            txtNewResolutionC2R1.Text = ((c2r1 * 270) / 360).ToString("F");
+            txtNewResolutionC2R2.Text = ((c2r2 * 270) / 360).ToString("F");
+            txtNewResolutionC3R1.Text = ((c3r1 * 270) / 360).ToString("F");
+            txtNewResolutionC3R2.Text = ((c3r2 * 270) / 360).ToString("F");
+            txtNewResolutionM1R1.Text = ((m1r1 * 270) / 360).ToString("F");
+            txtNewResolutionM1R2.Text = ((m1r2 * 270) / 360).ToString("F");
+            txtNewResolutionM2R1.Text = ((m2r1 * 270) / 360).ToString("F");
+            txtNewResolutionM2R2.Text = ((m2r2 * 270) / 360).ToString("F");
+            txtNewResolutionM3R1.Text = ((m3r1 * 270) / 360).ToString("F");
+            txtNewResolutionM3R2.Text = ((m3r2 * 270) / 360).ToString("F");
+            txtNewResolutionY1R1.Text = ((y1r1 * 270) / 360).ToString("F");
+            txtNewResolutionY1R2.Text = ((y1r2 * 270) / 360).ToString("F");
+            txtNewResolutionY2R1.Text = ((y2r1 * 270) / 360).ToString("F");
+            txtNewResolutionY2R2.Text = ((y2r2 * 270) / 360).ToString("F");
+            txtNewResolutionY3R1.Text = ((y3r1 * 270) / 360).ToString("F");
+            txtNewResolutionY3R2.Text = ((y3r2 * 270) / 360).ToString("F");
+            txtNewResolutionK1R1.Text = ((k1r1 * 270) / 360).ToString("F");
+            txtNewResolutionK1R2.Text = ((k1r2 * 270) / 360).ToString("F");
+            txtNewResolutionK2R1.Text = ((k2r1 * 270) / 360).ToString("F");
+            txtNewResolutionK2R2.Text = ((k2r2 * 270) / 360).ToString("F");
+            txtNewResolutionK3R1.Text = ((k3r1 * 270) / 360).ToString("F");
+            txtNewResolutionK3R2.Text = ((k3r2 * 270) / 360).ToString("F");
         }
 
         public void CalculatePDOffset225DPI()
         {
-            txtNewResolutionW1R1.Text = ((w1r1 * 225) / 360).ToString();
-            txtNewResolutionW1R2.Text = ((w1r2 * 225) / 360).ToString();
-            txtNewResolutionW2R1.Text = ((w2r1 * 225) / 360).ToString();
-            txtNewResolutionW2R2.Text = ((w2r2 * 225) / 360).ToString();
-            txtNewResolutionW3R1.Text = ((w3r1 * 225) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r2 * 225) / 360).ToString();
-            txtNewResolutionC1R1.Text = ((c1r1 * 225) / 360).ToString();
-            txtNewResolutionC1R2.Text = ((c1r2 * 225) / 360).ToString();
-            txtNewResolutionC2R1.Text = ((c2r1 * 225) / 360).ToString();
-            txtNewResolutionC2R2.Text = ((c2r2 * 225) / 360).ToString();
-            txtNewResolutionC3R1.Text = ((c3r1 * 225) / 360).ToString();
-            txtNewResolutionC3R2.Text = ((c3r2 * 225) / 360).ToString();
-            txtNewResolutionM1R1.Text = ((m1r1 * 225) / 360).ToString();
-            txtNewResolutionM1R2.Text = ((m1r2 * 225) / 360).ToString();
-            txtNewResolutionM2R1.Text = ((m2r1 * 225) / 360).ToString();
-            txtNewResolutionM2R2.Text = ((m2r2 * 225) / 360).ToString();
-            txtNewResolutionM3R1.Text = ((m3r1 * 225) / 360).ToString();
-            txtNewResolutionM3R2.Text = ((m3r2 * 225) / 360).ToString();
-            txtNewResolutionY1R1.Text = ((y1r1 * 225) / 360).ToString();
-            txtNewResolutionY1R2.Text = ((y1r2 * 225) / 360).ToString();
-            txtNewResolutionY2R1.Text = ((y2r1 * 225) / 360).ToString();
-            txtNewResolutionY2R2.Text = ((y2r2 * 225) / 360).ToString();
-            txtNewResolutionY3R1.Text = ((y3r1 * 225) / 360).ToString();
-            txtNewResolutionY3R2.Text = ((y3r2 * 225) / 360).ToString();
-            txtNewResolutionK1R1.Text = ((k1r1 * 225) / 360).ToString();
-            txtNewResolutionK1R2.Text = ((k1r2 * 225) / 360).ToString();
-            txtNewResolutionK2R1.Text = ((k2r1 * 225) / 360).ToString();
-            txtNewResolutionK2R2.Text = ((k2r2 * 225) / 360).ToString();
-            txtNewResolutionK3R1.Text = ((k3r1 * 225) / 360).ToString();
-            txtNewResolutionK3R2.Text = ((k3r2 * 225) / 360).ToString();
+            txtNewResolutionW1R1.Text = ((w1r1 * 225) / 360).ToString("F");
+            txtNewResolutionW1R2.Text = ((w1r2 * 225) / 360).ToString("F");
+            txtNewResolutionW2R1.Text = ((w2r1 * 225) / 360).ToString("F");
+            txtNewResolutionW2R2.Text = ((w2r2 * 225) / 360).ToString("F");
+            txtNewResolutionW3R1.Text = ((w3r1 * 225) / 360).ToString("F");
+            txtNewResolutionW3R2.Text = ((w3r2 * 225) / 360).ToString("F");
+            txtNewResolutionC1R1.Text = ((c1r1 * 225) / 360).ToString("F");
+            txtNewResolutionC1R2.Text = ((c1r2 * 225) / 360).ToString("F");
+            txtNewResolutionC2R1.Text = ((c2r1 * 225) / 360).ToString("F");
+            txtNewResolutionC2R2.Text = ((c2r2 * 225) / 360).ToString("F");
+            txtNewResolutionC3R1.Text = ((c3r1 * 225) / 360).ToString("F");
+            txtNewResolutionC3R2.Text = ((c3r2 * 225) / 360).ToString("F");
+            txtNewResolutionM1R1.Text = ((m1r1 * 225) / 360).ToString("F");
+            txtNewResolutionM1R2.Text = ((m1r2 * 225) / 360).ToString("F");
+            txtNewResolutionM2R1.Text = ((m2r1 * 225) / 360).ToString("F");
+            txtNewResolutionM2R2.Text = ((m2r2 * 225) / 360).ToString("F");
+            txtNewResolutionM3R1.Text = ((m3r1 * 225) / 360).ToString("F");
+            txtNewResolutionM3R2.Text = ((m3r2 * 225) / 360).ToString("F");
+            txtNewResolutionY1R1.Text = ((y1r1 * 225) / 360).ToString("F");
+            txtNewResolutionY1R2.Text = ((y1r2 * 225) / 360).ToString("F");
+            txtNewResolutionY2R1.Text = ((y2r1 * 225) / 360).ToString("F");
+            txtNewResolutionY2R2.Text = ((y2r2 * 225) / 360).ToString("F");
+            txtNewResolutionY3R1.Text = ((y3r1 * 225) / 360).ToString("F");
+            txtNewResolutionY3R2.Text = ((y3r2 * 225) / 360).ToString("F");
+            txtNewResolutionK1R1.Text = ((k1r1 * 225) / 360).ToString("F");
+            txtNewResolutionK1R2.Text = ((k1r2 * 225) / 360).ToString("F");
+            txtNewResolutionK2R1.Text = ((k2r1 * 225) / 360).ToString("F");
+            txtNewResolutionK2R2.Text = ((k2r2 * 225) / 360).ToString("F");
+            txtNewResolutionK3R1.Text = ((k3r1 * 225) / 360).ToString("F");
+            txtNewResolutionK3R2.Text = ((k3r2 * 225) / 360).ToString("F");
         }
 
         public void CalculatePDOffset180DPI()
         {
-            txtNewResolutionW1R1.Text = ((w1r1 * 180) / 360).ToString();
-            txtNewResolutionW1R2.Text = ((w1r2 * 180) / 360).ToString();
-            txtNewResolutionW2R1.Text = ((w2r1 * 180) / 360).ToString();
-            txtNewResolutionW2R2.Text = ((w2r2 * 180) / 360).ToString();
-            txtNewResolutionW3R1.Text = ((w3r1 * 180) / 360).ToString();
-            txtNewResolutionW3R2.Text = ((w3r2 * 180) / 360).ToString();
-            txtNewResolutionC1R1.Text = ((c1r1 * 180) / 360).ToString();
-            txtNewResolutionC1R2.Text = ((c1r2 * 180) / 360).ToString();
-            txtNewResolutionC2R1.Text = ((c2r1 * 180) / 360).ToString();
-            txtNewResolutionC2R2.Text = ((c2r2 * 180) / 360).ToString();
-            txtNewResolutionC3R1.Text = ((c3r1 * 180) / 360).ToString();
-            txtNewResolutionC3R2.Text = ((c3r2 * 180) / 360).ToString();
-            txtNewResolutionM1R1.Text = ((m1r1 * 180) / 360).ToString();
-            txtNewResolutionM1R2.Text = ((m1r2 * 180) / 360).ToString();
-            txtNewResolutionM2R1.Text = ((m2r1 * 180) / 360).ToString();
-            txtNewResolutionM2R2.Text = ((m2r2 * 180) / 360).ToString();
-            txtNewResolutionM3R1.Text = ((m3r1 * 180) / 360).ToString();
-            txtNewResolutionM3R2.Text = ((m3r2 * 180) / 360).ToString();
-            txtNewResolutionY1R1.Text = ((y1r1 * 180) / 360).ToString();
-            txtNewResolutionY1R2.Text = ((y1r2 * 180) / 360).ToString();
-            txtNewResolutionY2R1.Text = ((y2r1 * 180) / 360).ToString();
-            txtNewResolutionY2R2.Text = ((y2r2 * 180) / 360).ToString();
-            txtNewResolutionY3R1.Text = ((y3r1 * 180) / 360).ToString();
-            txtNewResolutionY3R2.Text = ((y3r2 * 180) / 360).ToString();
-            txtNewResolutionK1R1.Text = ((k1r1 * 180) / 360).ToString();
-            txtNewResolutionK1R2.Text = ((k1r2 * 180) / 360).ToString();
-            txtNewResolutionK2R1.Text = ((k2r1 * 180) / 360).ToString();
-            txtNewResolutionK2R2.Text = ((k2r2 * 180) / 360).ToString();
-            txtNewResolutionK3R1.Text = ((k3r1 * 180) / 360).ToString();
-            txtNewResolutionK3R2.Text = ((k3r2 * 180) / 360).ToString();
+            txtNewResolutionW1R1.Text = ((w1r1 * 180) / 360).ToString("F");
+            txtNewResolutionW1R2.Text = ((w1r2 * 180) / 360).ToString("F");
+            txtNewResolutionW2R1.Text = ((w2r1 * 180) / 360).ToString("F");
+            txtNewResolutionW2R2.Text = ((w2r2 * 180) / 360).ToString("F");
+            txtNewResolutionW3R1.Text = ((w3r1 * 180) / 360).ToString("F");
+            txtNewResolutionW3R2.Text = ((w3r2 * 180) / 360).ToString("F");
+            txtNewResolutionC1R1.Text = ((c1r1 * 180) / 360).ToString("F");
+            txtNewResolutionC1R2.Text = ((c1r2 * 180) / 360).ToString("F");
+            txtNewResolutionC2R1.Text = ((c2r1 * 180) / 360).ToString("F");
+            txtNewResolutionC2R2.Text = ((c2r2 * 180) / 360).ToString("F");
+            txtNewResolutionC3R1.Text = ((c3r1 * 180) / 360).ToString("F");
+            txtNewResolutionC3R2.Text = ((c3r2 * 180) / 360).ToString("F");
+            txtNewResolutionM1R1.Text = ((m1r1 * 180) / 360).ToString("F");
+            txtNewResolutionM1R2.Text = ((m1r2 * 180) / 360).ToString("F");
+            txtNewResolutionM2R1.Text = ((m2r1 * 180) / 360).ToString("F");
+            txtNewResolutionM2R2.Text = ((m2r2 * 180) / 360).ToString("F");
+            txtNewResolutionM3R1.Text = ((m3r1 * 180) / 360).ToString("F");
+            txtNewResolutionM3R2.Text = ((m3r2 * 180) / 360).ToString("F");
+            txtNewResolutionY1R1.Text = ((y1r1 * 180) / 360).ToString("F");
+            txtNewResolutionY1R2.Text = ((y1r2 * 180) / 360).ToString("F");
+            txtNewResolutionY2R1.Text = ((y2r1 * 180) / 360).ToString("F");
+            txtNewResolutionY2R2.Text = ((y2r2 * 180) / 360).ToString("F");
+            txtNewResolutionY3R1.Text = ((y3r1 * 180) / 360).ToString("F");
+            txtNewResolutionY3R2.Text = ((y3r2 * 180) / 360).ToString("F");
+            txtNewResolutionK1R1.Text = ((k1r1 * 180) / 360).ToString("F");
+            txtNewResolutionK1R2.Text = ((k1r2 * 180) / 360).ToString("F");
+            txtNewResolutionK2R1.Text = ((k2r1 * 180) / 360).ToString("F");
+            txtNewResolutionK2R2.Text = ((k2r2 * 180) / 360).ToString("F");
+            txtNewResolutionK3R1.Text = ((k3r1 * 180) / 360).ToString("F");
+            txtNewResolutionK3R2.Text = ((k3r2 * 180) / 360).ToString("F");
         }
     }
 }
