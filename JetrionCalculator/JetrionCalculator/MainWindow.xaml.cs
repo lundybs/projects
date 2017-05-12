@@ -21,7 +21,7 @@ namespace JetrionCalculator
 
 
 
-        private bool cbEmbossChecked, cbHotstampChecked;
+        private bool cbEmbossChecked, cbHotstampChecked, rbNone, rbTwo, rbFive, rbTen;
 
         List<double> footage = new List<double>();
 
@@ -130,7 +130,7 @@ namespace JetrionCalculator
                     addedTotalFootage += values;
                 }
             }
-            
+
             txtTotalJobFootage.Text = Math.Round((addedTotalFootage + tailFootage + leaderFootage + totalItemBlankFootage), 2).ToString();
         }
 
@@ -159,7 +159,34 @@ namespace JetrionCalculator
 
         public void RadioButtonNone(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("this is the none box");
+            if (rb0percent.IsChecked == true)
+            {
+                rbNone = true;
+            }
+        }
+
+        private void RadioButtonTwoPercent(object sender, RoutedEventArgs e)
+        {
+            if (rb2percent.IsChecked == true)
+            {
+                rbTwo = true;
+            }
+        }
+
+        private void RadioButtonFivePercent(object sender, RoutedEventArgs e)
+        {
+            if (rb5percent.IsChecked == true)
+            {
+                rbFive = true;
+            }
+        }
+
+        private void RadioButtonTenPercent(object sender, RoutedEventArgs e)
+        {
+            if (rb10percent.IsChecked == true)
+            {
+                rbTen = true;
+            }
         }
 
         public void btn50FootStop_Click(object sender, RoutedEventArgs e)
@@ -174,19 +201,6 @@ namespace JetrionCalculator
             {
                 MessageBox.Show("Not all values were entered correctly, or no value was typed in for pixel size", "Uh oh!!", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
             }
-        }
-
-        public void ComboBoxLoadedResolutions(object sender, RoutedEventArgs e)
-        {
-            List<string> resolution = new List<string>();
-            resolution.Add("Select DPI");
-            resolution.Add("270 dpi");
-            resolution.Add("225 dpi");
-            resolution.Add("180 dpi");
-
-            var comboBox = sender as ComboBox;
-            comboBox.ItemsSource = resolution;
-            comboBox.SelectedIndex = 0;
         }
 
         public void ClearTextBoxWithGotFocus(object sender, RoutedEventArgs e)
@@ -229,64 +243,133 @@ namespace JetrionCalculator
 
         public void TotalLabelsToPrint()
         {
-            if (cbEmbossChecked == true)
+            if (rbNone == true)
             {
-                if (labelQuantity <= 4999)
+                if (cbEmbossChecked == true)
                 {
-                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + oneHundredFeet);
-                    lblTotal.Content = "Total for 10% is:";
+                    if (labelQuantity <= 4999)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + oneHundredFeet);
+                        lblTotal.Content = "Total for 10% is:";
+                    }
+                    else if (labelQuantity >= 10000)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + oneHundredFeet);
+                        lblTotal.Content = "Total for 2% is:";
+                    }
+                    else
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + oneHundredFeet);
+                        lblTotal.Content = "Total for 5% is:";
+                    }
+                    cbEmbossChecked = false;
                 }
-                else if (labelQuantity >= 10000)
+                else if (cbHotstampChecked == true)
+                {
+                    if (labelQuantity <= 4999)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + (oneHundredFeet * 2));
+                        lblTotal.Content = "Total for 10% is:";
+                    }
+                    else if (labelQuantity >= 10000)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + (oneHundredFeet * 2));
+                        lblTotal.Content = "Total for 2% is:";
+                    }
+                    else
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + (oneHundredFeet * 2));
+                        lblTotal.Content = "Total for 5% is:";
+                    }
+                    cbHotstampChecked = false;
+                }
+                else
+                {
+                    if (labelQuantity <= 4999)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages);
+                        lblTotal.Content = "Total for 10% is:";
+                    }
+                    else if (labelQuantity >= 10000)
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages);
+                        lblTotal.Content = "Total for 2% is:";
+                    }
+                    else
+                    {
+                        labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages);
+                        lblTotal.Content = "Total for 5% is:";
+                    }
+                }
+                txtTotalLabels.Text = ((int)labelTotal + 1).ToString();
+                rbNone = false;
+            }
+            else if (rbTwo == true)
+            {
+                if (cbEmbossChecked == true)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + oneHundredFeet);
                     lblTotal.Content = "Total for 2% is:";
+                    cbEmbossChecked = false;
                 }
-                else
-                {
-                    labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + oneHundredFeet);
-                    lblTotal.Content = "Total for 5% is:";
-                }
-                cbEmbossChecked = false;
-            }
-            else if (cbHotstampChecked == true)
-            {
-                if (labelQuantity <= 4999)
-                {
-                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + (oneHundredFeet * 2));
-                    lblTotal.Content = "Total for 10% is:";
-                }
-                else if (labelQuantity >= 10000)
+                else if (cbHotstampChecked == true)
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages + (oneHundredFeet * 2));
                     lblTotal.Content = "Total for 2% is:";
+                    cbHotstampChecked = false;
                 }
                 else
                 {
-                    labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + (oneHundredFeet * 2));
-                    lblTotal.Content = "Total for 5% is:";
-                }
-                cbHotstampChecked = false;
-            }
-            else
-            {
-                if (labelQuantity <= 4999)
-                {
-                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages);
-                    lblTotal.Content = "Total for 10% is:";
-                }
-                else if (labelQuantity >= 10000)
-                {
                     labelTotal = ((labelQuantity / labelImages) * 1.02 + fiftyFeetImages);
                     lblTotal.Content = "Total for 2% is:";
+                }
+                txtTotalLabels.Text = ((int)labelTotal + 1).ToString();
+                rbTwo = false;
+            }
+            else if (rbFive == true)
+            {
+                if (cbEmbossChecked == true)
+                {
+                    labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + oneHundredFeet);
+                    lblTotal.Content = "Total for 5% is:";
+                    cbEmbossChecked = false;
+                }
+                else if (cbHotstampChecked == true)
+                {
+                    labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages + (oneHundredFeet * 2));
+                    lblTotal.Content = "Total for 5% is:";
+                    cbHotstampChecked = false;
                 }
                 else
                 {
                     labelTotal = ((labelQuantity / labelImages) * 1.05 + fiftyFeetImages);
                     lblTotal.Content = "Total for 5% is:";
                 }
+                txtTotalLabels.Text = ((int)labelTotal + 1).ToString();
+                rbFive = false;
             }
-
-            txtTotalLabels.Text = ((int)labelTotal + 1).ToString();
+            else
+            {
+                if (cbEmbossChecked == true)
+                {
+                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + oneHundredFeet);
+                    lblTotal.Content = "Total for 10% is:";
+                    cbEmbossChecked = false;
+                }
+                else if (cbHotstampChecked == true)
+                {
+                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages + (oneHundredFeet * 2));
+                    lblTotal.Content = "Total for 10% is:";
+                    cbHotstampChecked = false;
+                }
+                else
+                {
+                    labelTotal = ((labelQuantity / labelImages) * 1.1 + fiftyFeetImages);
+                    lblTotal.Content = "Total for 10% is:";
+                }
+                txtTotalLabels.Text = ((int)labelTotal + 1).ToString();
+                rbTen = false;
+            }
         }
 
         public void FiftyStopTotal()
@@ -342,7 +425,21 @@ namespace JetrionCalculator
             txt32Pitch.Text = ((int)thirtyTwoPitch + 1).ToString();
         }
 
+
         //pd offset methods
+        public void ComboBoxLoadedResolutions(object sender, RoutedEventArgs e)
+        {
+            List<string> resolution = new List<string>();
+            resolution.Add("Select DPI");
+            resolution.Add("270 dpi");
+            resolution.Add("225 dpi");
+            resolution.Add("180 dpi");
+
+            var comboBox = sender as ComboBox;
+            comboBox.ItemsSource = resolution;
+            comboBox.SelectedIndex = 0;
+        }
+
         public void buttonPDOffset_Click(object sender, RoutedEventArgs e)
         {
             try //use to catch some errors

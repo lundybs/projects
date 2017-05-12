@@ -78,10 +78,10 @@
                     <Button x:Name="btnClearList" Content="Clear Total Job Footage" HorizontalAlignment="Left" Margin="222,323.96,0,0" VerticalAlignment="Top" Width="135.8" Click="btnClearList_Click" />
                     <GroupBox x:Name="groupBox6" Header="Overs" HorizontalAlignment="Left" Height="107.76" Margin="231,171,0,0" VerticalAlignment="Top" Width="65.4">
                         <Grid>
-                            <RadioButton x:Name="rbNone" Content="None" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="RadioButtonNone"/>
-                            <RadioButton x:Name="rb2percent" Content="2%" HorizontalAlignment="Left" Margin="5,30,0,0" VerticalAlignment="Top"/>
-                            <RadioButton x:Name="rb5percent" Content="5%" HorizontalAlignment="Left" Margin="5.6,50,0,0" VerticalAlignment="Top"/>
-                            <RadioButton x:Name="rb10percent" Content="10%" HorizontalAlignment="Left" Margin="5.6,70,0,0" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="rb0percent" GroupName="Overs" Content="None" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="RadioButtonNone"/>
+                            <RadioButton x:Name="rb2percent" GroupName="Overs" Content="2%" HorizontalAlignment="Left" Margin="5,30,0,0" VerticalAlignment="Top" Checked="RadioButtonTwoPercent"/>
+                            <RadioButton x:Name="rb5percent" GroupName="Overs" Content="5%" HorizontalAlignment="Left" Margin="5.6,50,0,0" VerticalAlignment="Top" Checked="RadioButtonFivePercent"/>
+                            <RadioButton x:Name="rb10percent" GroupName="Overs" Content="10%" HorizontalAlignment="Left" Margin="5.6,70,0,0" VerticalAlignment="Top" Checked="RadioButtonTenPercent"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
