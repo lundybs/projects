@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 
+
 namespace JetrionCalculator
 {
     /// <summary>
@@ -18,8 +19,6 @@ namespace JetrionCalculator
                        m1r1, m1r2, m2r1, m2r2, m3r1, m3r2,
                        y1r1, y1r2, y2r1, y2r2, y3r1, y3r2,
                        k1r1, k1r2, k2r1, k2r2, k3r1, k3r2;
-
-
 
         private bool cbEmbossChecked, cbHotstampChecked, rbNone, rbTwo, rbFive, rbTen;
 
@@ -76,7 +75,6 @@ namespace JetrionCalculator
                     catch
                     {
                         MessageBox.Show("You did not enter in correct numeric values", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Error);
-
                     }
                 }
             }
